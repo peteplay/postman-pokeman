@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "4ad9e225-915c-45ba-954b-85e0555354aa",
+		"name": "Pokemon API Multiple",
+		"description": "Run API Collection on the Poke API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Pokemon",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"const response = pm.response.json();",
+							"",
+							"switch(response.forms[0].name) {",
+							"    case 'snorlax':",
+							"        pm.test(\"Snorlax weight is 4600 and has 3 abilities\", function () {",
+							"            pm.expect(response.weight).to.eql(4600);",
+							"            var no_of_abilities = response.abilities.length;",
+							"            pm.expect(response.abilities.length).to.eql(3);",
+							"        });",
+							"    break;",
+							"        case 'pidgey':",
+							"        pm.test(\"Pidgey weight is 18 and has 3 abilities\", function () {",
+							"            pm.expect(response.weight).to.eql(18);",
+							"            pm.expect(response.abilities.length).to.eql(3);",
+							"        });",
+							"    break;",
+							"        case 'pidgeot':",
+							"        pm.test(\"Pidgeot weight is 395 and has 3 abilities\", function () {",
+							"            pm.expect(response.weight).to.eql(395);",
+							"            pm.expect(response.abilities.length).to.eql(3);",
+							"        });",
+							"    break;",
+							"        case 'squirtle':",
+							"        pm.test(\"Squirtle weight is 10 and has 2 abilities\", function () {",
+							"            pm.expect(response.weight).to.eql(90);",
+							"            pm.expect(response.abilities.length).to.eql(2);",
+							"        });",
+							"    break;",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v2/pokemon/:pokemon",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v2",
+						"pokemon",
+						":pokemon"
+					],
+					"variable": [
+						{
+							"key": "pokemon",
+							"value": "{{pokemon}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
