@@ -32,8 +32,7 @@ jobs:
     # Run the POSTMAN collection with report
     - name: Run POSTMAN collection
       run: |
-       newman run "./collection/Pokemon API Multiple.postman_collection.json" -e "./environment/pokemonapi-env.postman_environment.json" -d "./data/pokemon.json" |
-       --reporters=cli,htmlextra --reporter-htmlextra-title "Pokemon Characters" --reporter-htmlextra-export ./results/report.html
+       newman run "./collection/Pokemon API Multiple.postman_collection.json" -e "./environment/pokemonapi-env.postman_environment.json" -d "./data/pokemon.json" --reporters=cli,htmlextra --reporter-htmlextra-title "Pokemon Characters" --reporter-htmlextra-export ./results/report.html
        
        
     # Upload the contents of Test Results directory to workspace
